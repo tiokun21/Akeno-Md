@@ -21,6 +21,7 @@ cmd({
     },
     async(Void, citel,text) => {
         let zx = text.length;
+        let fetchk = require("node-fetch");
         if (zx < 30) {
             let {data} = await fetchk(`http://api.brainshop.ai/get?bid=170434&key=FrCpqU3jDT1i4KG7&uid=[${citel.sender.split("@")[0]}]&msg=[${text}]`);
             return citel.reply(data.cnt);  
