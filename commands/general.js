@@ -22,7 +22,7 @@ cmd({
     async(Void, citel,text) => {
         let zx = text.length;
         if (zx < 30) {
-            let {data} = await fetchk(`http://api.brainshop.ai/get?bid=167991&key=aozpOoNOy3dfLgmB&uid=[${citel.sender.split("@")[0]}]&msg=[${text}]`);
+            let {data} = await fetchk(`http://api.brainshop.ai/get?bid=170434&key=FrCpqU3jDT1i4KG7&uid=[${citel.sender.split("@")[0]}]&msg=[${text}]`);
             return citel.reply(data.cnt);  
         }
         if (!text) return citel.reply(`Hey there! ${citel.pushName}. How are you doing these days?`);
@@ -42,44 +42,6 @@ cmd({
             stop: ['"""'],
         });
         citel.reply(completion.data.choices[0].text);
-    }
-)
-//---------------------------------------------------------------------------
-cmd({
-        pattern: "repo",
-        alias: ["git", "sc", "script"],
-        desc: "Sends info about repo.",
-        category: "general",
-    },
-    async(Void, citel) => {
-        let { data } = await axios.get('https://api.github.com/repos/Mnuvq/Akeno-Md')
-        let cap = `Hey ${citel.pushName}\n
-*⭐ Total Stars:* ${data.stargazers_count} stars
-*🍽️ Forks:* ${data.forks_count} forks
-*🍁 Repo:* https://github.com/Mnuvq/Akeno-Md
-*Group:* https://chat.whatsapp.com/Bl2F9UTVU4CBfZU6eVnrbCl
-*Deploy Your Own:*-
-AkenoBot.herokuapp.com/deploy `
-        let buttonMessaged = {
-            image: { url: await botpic() },
-            caption: cap,
-            footer: tlang().footer,
-            headerType: 4,
-            contextInfo: {
-                externalAdReply: {
-                    title: "Akeno-Repo",
-                    body: "Easy to Use",
-                    thumbnail: log0,
-                    mediaType: 4,
-                    mediaUrl: '',
-                    sourceUrl: ``,
-                },
-            },
-        };
-        return await Void.sendMessage(citel.chat, buttonMessaged, {
-            quoted: citel,
-        });
-
     }
 )
 //---------------------------------------------------------------------------
